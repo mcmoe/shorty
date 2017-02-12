@@ -1,7 +1,7 @@
 {
-  "name": "polymer-starter-kit",
+  "name": "shorty",
   "authors": [
-    "The Polymer Authors"
+    "Morgan Kobeissi"
   ],
   "license": "https://polymer.github.io/LICENSE.txt",
   "dependencies": {
