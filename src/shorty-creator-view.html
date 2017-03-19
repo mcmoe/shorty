@@ -1,0 +1,83 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="shorty-creator-view">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .submit {
+        background:  var(--paper-green-500);
+        color: white;
+        border-radius: 50%;
+        min-width: 0;
+        min-height: 0;
+        width: 40px;
+        height: 40px;
+        @apply(--layout-self-end);
+      }
+
+      .clear {
+        color: var(--paper-pink-500);
+      }
+      .flexbox {
+        @apply(--layout-horizontal);
+        @apply(--layout-justified);
+      }
+
+      .flexchild {
+          /*@apply(--layout-flex-auto);*/
+      }
+
+    </style>
+
+    <div class="card">
+      <h1>Shorten a URL</h1>
+      <paper-input label="Original URL"></paper-input>
+
+      <div class="flexbox">
+        <paper-input-container>
+          <div prefix>www.moeshipie.com/</div>
+          <label>your custom url</label>
+          <input is="iron-input" bind-value="{{_shortenedUrl}}" prevent-invalid-input allowed-pattern="[a-z0-9]"></input>
+          <paper-icon-button suffix class="clear" icon="clear" on-tap="clearInput"></paper-icon-button>
+        </paper-input-container>
+        <paper-button raised class="submit" on-tap="submit"><iron-icon icon="add"></iron-icon></paper-button>
+      </div>
+
+    </div>
+
+  </template>
+
+  <script>
+    Polymer({
+      is: 'shorty-creator-view',
+
+      properties: {
+        _shortenedUrl: String
+      },
+
+      clearInput: function() {
+        this._shortenedUrl = "";
+      }
+    });
+  </script>
+</dom-module>
